@@ -13,6 +13,10 @@ body {
     text-align:center;
 }
 
+button:hover {
+    cursor:pointer;
+}
+
 #container {
     width: min(800px,100%);
     display:flex;

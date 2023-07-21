@@ -27,4 +27,16 @@ function addBook() {
     library.push(newBook)
 }
 
+function submitBookForm(event) {
+    const newBook = new Book(`${newBookTitle.value}`,`${newBookAuthor.value}`,`${newBookPages.value}`,`${newBookRead.value}`)
+    library.push(newBook)
+    event.preventDefault()
+    toggleNewBookModal()
+    newBookTitle.value=""
+    newBookAuthor.value=""
+    newBookPages.value=""
+    newBookRead.value="not read"
+}
+
+submitButton.addEventListener("click", submitBookForm)
 
