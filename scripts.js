@@ -1,6 +1,7 @@
 const newBookModal = document.getElementById(`new-book-modal`)
 const library = []
 const submitButton = document.getElementById(`submit-book`)
+const libraryGrid = document.getElementById(`library-grid`)
 
 const newBookTitle = document.getElementById(`title`)
 const newBookAuthor = document.getElementById(`author`)

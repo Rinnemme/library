@@ -32,6 +32,35 @@ body {
 .book {
     width:150px;
     height:200px;
+    background-color:rgb(100,100,100);
+    padding: 40px 10px 10px 10px;
+    text-align:center;
+    justify-content:center;
+    color:white;
+    font-size:.9em;
+    display:flex;
+    position:relative;
+}
+
+.book>button {
+    border-radius:2px;
+    border:1px solid white;
+    color:white;
+    padding:5px 8px 5px 8px;
+}
+
+.toggle-read {
+    background-color:black;
+    position:absolute;
+    bottom:5px;
+    justify-self:center;
+}
+
+.book-remove {
+    background-color:rgb(193, 80, 80);
+    position:absolute;
+    bottom:5px;
+    right:5px;
 }
 
 #new-book-form {
