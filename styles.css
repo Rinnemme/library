@@ -71,6 +71,21 @@ body {
     background-color:white;
     padding:20px;
     width:min(400px,100%);
+    position:relative;
+}
+
+#close-modal {
+    background-color:rgb(195, 104, 104);
+    position:absolute;
+    top:20px;
+    right:20px;
+    border-radius:15px;
+    border:1px solid white;
+    color:white;
+    line-height:0px;
+    padding:5px 8px 5px 8px;
+    width:30px;
+    height:30px;
 }
 
 #new-book-form>label {
