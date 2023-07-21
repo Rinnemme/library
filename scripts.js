@@ -24,7 +24,6 @@ function Book(title,author,pages,read) {
         if (this.read === "read") {
             this.read = "not read"
         } else this.read = "read"
-        console.log("I am at least being called")
     }
 }
 
@@ -74,7 +73,6 @@ function removeBook(element) {
 function toggleBookRead(element) {
     for (let i=0; i<(library.length); i++) {
         if (library[i].title === element.parentElement.title) {
-            console.log(`got it`)
             library[i].toggleRead()
         }
     }
