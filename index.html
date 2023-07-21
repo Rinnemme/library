@@ -19,7 +19,7 @@
         </div>
     </div>
     <div id="new-book-modal">
-        <button type="none" id="close-modal" onclick="toggleNewBookModal()">x</button>
+        <button class="close-modal" onclick="toggleNewBookModal()">x</button>
         <form action="post" id="new-book-form">
             <label for="title">Title</label>
             <input type="text" id="title" minlength="1">
@@ -34,6 +34,19 @@
             </select>
             <button type="submit" id="submit-book">Add book</button>
         </form>
+    </div>
+    <div id = "book-info-modal">
+        <button class="close-modal" onclick="toggleBookInfoModal()">x</button>
+        <div id = "book-info">
+            <h4>Title</h4>
+            <div id = "book-info-title"></div>
+            <h4>Author</h4>
+            <div id = "book-info-author"></div>
+            <h4>Pages</h4>
+            <div id = "book-info-pages"></div>
+            <h4>Read status</h4>
+            <div id = "book-info-read"></div>
+        </div>
     </div>
     <script src="scripts.js"></script>
 </body>

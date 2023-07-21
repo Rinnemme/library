@@ -1,4 +1,5 @@
 const newBookModal = document.getElementById(`new-book-modal`)
+const bookInfoModal = document.getElementById(`book-info-modal`)
 let library = []
 const submitButton = document.getElementById(`submit-book`)
 const libraryGrid = document.getElementById(`library-grid`)
@@ -8,10 +9,22 @@ const newBookAuthor = document.getElementById(`author`)
 const newBookPages = document.getElementById(`pages`)
 const newBookRead = document.getElementById(`read-status`)
 
+const bookInfoTitle = document.getElementById(`book-info-title`)
+const bookInfoAuthor = document.getElementById(`book-info-author`)
+const bookInfoPages = document.getElementById(`book-info-pages`)
+const bookInfoRead = document.getElementById(`book-info-read`)
+
 function toggleNewBookModal() {
     if (newBookModal.style.display==="flex") {
         newBookModal.style.display="none"
     } else {newBookModal.style.display="flex"
+    }
+}
+
+function toggleBookInfoModal() {
+    if (bookInfoModal.style.display==="flex") {
+        bookInfoModal.style.display="none"
+    } else {bookInfoModal.style.display="flex"
     }
 }
 
@@ -61,6 +74,13 @@ function submitBookForm(event) {
     newReadButton.classList.add("toggle-read")
     newReadButton.onclick = function () {toggleBookRead(this)}
     newBookElement.appendChild(newReadButton)
+
+    const newInfoButton = document.createElement("button")
+    newInfoButton.textContent = "i"
+    newInfoButton.classList.add("book-info")
+    newInfoButton.onclick = function () {displayBookInfo(this)}
+    newBookElement.appendChild(newInfoButton)
+
     libraryGrid.appendChild(newBookElement)
     toggleNewBookModal()
     clearForm()
@@ -80,6 +100,18 @@ function toggleBookRead(element) {
         element.textContent = "read"
     } else {
         element.textContent = "not read"
+    }
+}
+
+function displayBookInfo(element) {
+    for (let i=0; i<(library.length); i++) {
+        if (library[i].title === element.parentElement.title) {
+            bookInfoTitle.textContent=`${library[i].title}`
+            bookInfoAuthor.textContent=`${library[i].author}`
+            bookInfoPages.textContent=`${library[i].pages}`
+            bookInfoRead.textContent=`${library[i].read}`
+            toggleBookInfoModal()
+        }
     }
 }
 
