@@ -1,6 +1,7 @@
+let library = []
+
 const newBookModal = document.getElementById(`new-book-modal`)
 const bookInfoModal = document.getElementById(`book-info-modal`)
-let library = []
 const submitButton = document.getElementById(`submit-book`)
 const libraryGrid = document.getElementById(`library-grid`)
 
@@ -15,16 +16,9 @@ const bookInfoPages = document.getElementById(`book-info-pages`)
 const bookInfoRead = document.getElementById(`book-info-read`)
 
 function toggleNewBookModal() {
-    if (newBookModal.style.display==="flex") {
-        newBookModal.style.display="none"
-    } else {newBookModal.style.display="flex"
-    }
-}
-
-function toggleBookInfoModal() {
-    if (bookInfoModal.style.display==="flex") {
-        bookInfoModal.style.display="none"
-    } else {bookInfoModal.style.display="flex"
+    if (newBookModal.style.display === "flex") {
+        newBookModal.style.display = "none"
+    } else {newBookModal.style.display = "flex"
     }
 }
 
@@ -46,10 +40,10 @@ function addBook() {
 }
 
 function clearForm() {
-    newBookTitle.value=""
-    newBookAuthor.value=""
-    newBookPages.value=""
-    newBookRead.value="not read"
+    newBookTitle.value = ""
+    newBookAuthor.value = ""
+    newBookPages.value = ""
+    newBookRead.value = "not read"
 }
 
 function submitBookForm(event) {
@@ -58,9 +52,9 @@ function submitBookForm(event) {
     library.push(newBook)
     const newBookElement = document.createElement("div")
     newBookElement.classList.add("book")
-    newBookElement.textContent=`${newBook.title}`
-    newBookElement.title=`${newBook.title}`
-    newBookElement.style.backgroundColor=`rgb(${Math.ceil(Math.random()*100)},${Math.ceil(Math.random()*100)},${Math.ceil(Math.random()*100)})`
+    newBookElement.textContent = `${newBook.title}`
+    newBookElement.title = `${newBook.title}`
+    newBookElement.style.backgroundColor = `rgb(${Math.ceil(Math.random()*100)},${Math.ceil(Math.random()*100)},${Math.ceil(Math.random()*100)})`
     const newBookBy = document.createElement("p")
     newBookBy.textContent = `by ${newBook.author}`
     newBookElement.appendChild(newBookBy)
@@ -74,17 +68,18 @@ function submitBookForm(event) {
     newReadButton.classList.add("toggle-read")
     newReadButton.onclick = function () {toggleBookRead(this)}
     newBookElement.appendChild(newReadButton)
-
     const newInfoButton = document.createElement("button")
     newInfoButton.textContent = "i"
     newInfoButton.classList.add("book-info")
     newInfoButton.onclick = function () {displayBookInfo(this)}
     newBookElement.appendChild(newInfoButton)
-
     libraryGrid.appendChild(newBookElement)
     toggleNewBookModal()
     clearForm()
 }
+
+submitButton.addEventListener("click", submitBookForm)
+
 function removeBook(element) {
     library = library.filter (book => book.title !== `${element.title}`)
     element.parentElement.removeChild(element)
@@ -103,17 +98,21 @@ function toggleBookRead(element) {
     }
 }
 
+function toggleBookInfoModal() {
+    if (bookInfoModal.style.display === "flex") {
+        bookInfoModal.style.display = "none"
+    } else {bookInfoModal.style.display = "flex"
+    }
+}
+
 function displayBookInfo(element) {
     for (let i=0; i<(library.length); i++) {
         if (library[i].title === element.parentElement.title) {
-            bookInfoTitle.textContent=`${library[i].title}`
-            bookInfoAuthor.textContent=`${library[i].author}`
-            bookInfoPages.textContent=`${library[i].pages}`
-            bookInfoRead.textContent=`${library[i].read}`
+            bookInfoTitle.textContent = `${library[i].title}`
+            bookInfoAuthor.textContent = `${library[i].author}`
+            bookInfoPages.textContent = `${library[i].pages}`
+            bookInfoRead.textContent = `${library[i].read}`
             toggleBookInfoModal()
         }
     }
 }
-
-submitButton.addEventListener("click", submitBookForm)
-
