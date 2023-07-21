@@ -49,6 +49,9 @@ function submitBookForm(event) {
     newBookElement.textContent=`${newBook.title}`
     newBookElement.title=`${newBook.title}`
     newBookElement.style.backgroundColor=`rgb(${Math.ceil(Math.random()*100)},${Math.ceil(Math.random()*100)},${Math.ceil(Math.random()*100)})`
+    const newBookBy = document.createElement("p")
+    newBookBy.textContent = `by ${newBook.author}`
+    newBookElement.appendChild(newBookBy)
     const newRemoveButton = document.createElement("button")
     newRemoveButton.textContent = "x"
     newRemoveButton.classList.add("book-remove")
