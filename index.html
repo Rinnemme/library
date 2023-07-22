@@ -14,12 +14,12 @@
 <body>
     <div id="container">
         <h1>Welcome to your library</h1>
-        <button id="add-book" onclick="toggleNewBookModal()">Add Book</button>
+        <button id="add-book" onclick="openNewBookModal()">Add Book</button>
         <div id="library-grid"></div>
     </div>
     <div id="new-book-modal">
-        <button class="close-modal" onclick="toggleNewBookModal()">x</button>
         <form action="post" id="new-book-form">
+            <button class="close-modal" id="close-new-book-modal">×</button>
             <label for="title">Title</label>
             <input type="text" id="title" minlength="1">
             <label for="author">Author</label>
@@ -35,8 +35,8 @@
         </form>
     </div>
     <div id = "book-info-modal">
-        <button class="close-modal" onclick="toggleBookInfoModal()">x</button>
         <div id = "book-info">
+            <button class="close-modal" onclick="toggleBookInfoModal()">×</button>
             <h4>Title</h4>
             <div id = "book-info-title"></div>
             <h4>Author</h4>

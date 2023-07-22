@@ -15,12 +15,19 @@ const bookInfoAuthor = document.getElementById(`book-info-author`)
 const bookInfoPages = document.getElementById(`book-info-pages`)
 const bookInfoRead = document.getElementById(`book-info-read`)
 
-function toggleNewBookModal() {
-    if (newBookModal.style.display === "flex") {
-        newBookModal.style.display = "none"
-    } else {newBookModal.style.display = "flex"
-    }
+const newBookModalCloseButton = document.getElementById("close-new-book-modal")
+const newBookButton = document.getElementById("new-book")
+
+function closeNewBookModal(event) {
+    event.preventDefault()
+    newBookModal.style.display = "none"
 }
+
+function openNewBookModal() {   
+    newBookModal.style.display = "flex"
+}
+
+newBookModalCloseButton.addEventListener("click", closeNewBookModal)
 
 function Book(title,author,pages,read) {
     this.title = title
@@ -59,7 +66,7 @@ function submitBookForm(event) {
     newBookBy.textContent = `by ${newBook.author}`
     newBookElement.appendChild(newBookBy)
     const newRemoveButton = document.createElement("button")
-    newRemoveButton.textContent = "x"
+    newRemoveButton.textContent = "×"
     newRemoveButton.classList.add("book-remove")
     newRemoveButton.onclick = function () {removeBook(this.parentElement)}
     newBookElement.appendChild(newRemoveButton)
@@ -69,16 +76,16 @@ function submitBookForm(event) {
     newReadButton.onclick = function () {toggleBookRead(this)}
     newBookElement.appendChild(newReadButton)
     const newInfoButton = document.createElement("button")
-    newInfoButton.textContent = "i"
+    newInfoButton.textContent = "ⓘ"
     newInfoButton.classList.add("book-info")
     newInfoButton.onclick = function () {displayBookInfo(this)}
     newBookElement.appendChild(newInfoButton)
     libraryGrid.appendChild(newBookElement)
-    toggleNewBookModal()
+    closeNewBookModal(event)
     clearForm()
 }
 
-submitButton.addEventListener("click", submitBookForm)
+submitButton.addEventListener("click", submitBookForm, closeNewBookModal)
 
 function removeBook(element) {
     library = library.filter (book => book.title !== `${element.title}`)
