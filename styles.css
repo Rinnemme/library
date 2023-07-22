@@ -43,7 +43,6 @@ button:hover {
     gap:10px;
     grid-template-columns: repeat(auto-fit, 170px);
     grid-auto-rows: 200px;
-    overflow:scroll;
     padding:0px 40px 40px 60px;
 }
 
