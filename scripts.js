@@ -85,7 +85,7 @@ function submitBookForm(event) {
     clearForm()
 }
 
-submitButton.addEventListener("click", submitBookForm, closeNewBookModal)
+submitButton.addEventListener("click", submitBookForm)
 
 function removeBook(element) {
     library = library.filter (book => book.title !== `${element.title}`)
