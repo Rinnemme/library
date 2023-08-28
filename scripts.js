@@ -54,7 +54,7 @@ function clearForm() {
 }
 
 function submitBookForm(event) {
-    event.preventDefault()
+    event.preventDefault()   
     const newBook = new Book(`${newBookTitle.value}`,`${newBookAuthor.value}`,`${newBookPages.value}`,`${newBookRead.value}`)
     library.push(newBook)
     const newBookElement = document.createElement("div")
@@ -84,8 +84,6 @@ function submitBookForm(event) {
     closeNewBookModal(event)
     clearForm()
 }
-
-submitButton.addEventListener("click", submitBookForm)
 
 function removeBook(element) {
     library = library.filter (book => book.title !== `${element.title}`)

@@ -18,20 +18,20 @@
         <div id="library-grid"></div>
     </div>
     <div id="new-book-modal">
-        <form action="post" id="new-book-form">
+        <form id="new-book-form" onsubmit="submitBookForm(event)">
             <button class="close-modal" id="close-new-book-modal">×</button>
             <label for="title">Title</label>
-            <input type="text" id="title" minlength="1">
+            <input type="text" id="title" minlength="1" required>
             <label for="author">Author</label>
-            <input type="text" id="author" minlength="1">
+            <input type="text" id="author" minlength="1" required>
             <label for="pages">Pages</label>
-            <input type="number" id="pages" minlength="1" >
+            <input type="number" id="pages" minlength="1" required>
             <label for="read-status">Read status</label>
             <select name="read status" id="read-status">
                 <option value="not read">not read</option>
                 <option value="read">read</option>
             </select>
-            <button type="submit" id="submit-book">Add book</button>
+            <button id="submit-book" value="Add book">Add Book</button>
         </form>
     </div>
     <div id = "book-info-modal">
