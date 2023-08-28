@@ -19,7 +19,7 @@
     </div>
     <div id="new-book-modal">
         <form id="new-book-form" onsubmit="submitBookForm(event)">
-            <button class="close-modal" id="close-new-book-modal">×</button>
+            <button class="close-modal" id="close-new-book-modal" onclick="closeNewBookModal(event)">×</button>
             <label for="title">Title</label>
             <input type="text" id="title" minlength="1" required>
             <label for="author">Author</label>

@@ -20,14 +20,13 @@ const newBookButton = document.getElementById("new-book")
 
 function closeNewBookModal(event) {
     event.preventDefault()
+    clearForm()
     newBookModal.style.display = "none"
 }
 
 function openNewBookModal() {   
     newBookModal.style.display = "flex"
 }
-
-newBookModalCloseButton.addEventListener("click", closeNewBookModal)
 
 class Book {
     constructor (title,author,pages,read) {
