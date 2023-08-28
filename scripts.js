@@ -5,27 +5,22 @@ const bookInfoModal = document.getElementById(`book-info-modal`)
 const submitButton = document.getElementById(`submit-book`)
 const libraryGrid = document.getElementById(`library-grid`)
 
-const newBookTitle = document.getElementById(`title`)
-const newBookAuthor = document.getElementById(`author`)
-const newBookPages = document.getElementById(`pages`)
-const newBookRead = document.getElementById(`read-status`)
+const formTitle = document.getElementById(`title`)
+const formAuthor = document.getElementById(`author`)
+const formPages = document.getElementById(`pages`)
+const formRead = document.getElementById(`read-status`)
 
-const bookInfoTitle = document.getElementById(`book-info-title`)
-const bookInfoAuthor = document.getElementById(`book-info-author`)
-const bookInfoPages = document.getElementById(`book-info-pages`)
-const bookInfoRead = document.getElementById(`book-info-read`)
+const infoTitle = document.getElementById(`book-info-title`)
+const infoAuthor = document.getElementById(`book-info-author`)
+const infoPages = document.getElementById(`book-info-pages`)
+const infoRead = document.getElementById(`book-info-read`)
 
-const newBookModalCloseButton = document.getElementById("close-new-book-modal")
+const newBookClose = document.getElementById("close-new-book-modal")
 const newBookButton = document.getElementById("new-book")
 
-function closeNewBookModal(event) {
-    event.preventDefault()
+function toggleNewBookModal() {
     clearForm()
-    newBookModal.style.display = "none"
-}
-
-function openNewBookModal() {   
-    newBookModal.style.display = "flex"
+    newBookModal.style.display = newBookModal.style.display === "flex" ? "none" : "flex"
 }
 
 class Book {
@@ -43,20 +38,20 @@ class Book {
 }
 
 function addBook() {
-    const newBook = new Book(`${newBookTitle.value}`,`${newBookAuthor.value}`,`${newBookPages.value}`,`${newBookRead.value}`)
+    const newBook = new Book(`${formTitle.value}`,`${formAuthor.value}`,`${formPages.value}`,`${formRead.value}`)
     library.push(newBook)
 }
 
 function clearForm() {
-    newBookTitle.value = ""
-    newBookAuthor.value = ""
-    newBookPages.value = ""
-    newBookRead.value = "not read"
+    formTitle.value = ""
+    formAuthor.value = ""
+    formPages.value = ""
+    formRead.value = "not read"
 }
 
 function submitBookForm(event) {
     event.preventDefault()   
-    const newBook = new Book(`${newBookTitle.value}`,`${newBookAuthor.value}`,`${newBookPages.value}`,`${newBookRead.value}`)
+    const newBook = new Book(`${formTitle.value}`,`${formAuthor.value}`,`${formPages.value}`,`${formRead.value}`)
     library.push(newBook)
     const newBookElement = document.createElement("div")
     newBookElement.classList.add("book")
@@ -82,7 +77,7 @@ function submitBookForm(event) {
     newInfoButton.onclick = function () {displayBookInfo(this)}
     newBookElement.appendChild(newInfoButton)
     libraryGrid.appendChild(newBookElement)
-    closeNewBookModal(event)
+    toggleNewBookModal()
     clearForm()
 }
 
@@ -105,19 +100,16 @@ function toggleBookRead(element) {
 }
 
 function toggleBookInfoModal() {
-    if (bookInfoModal.style.display === "flex") {
-        bookInfoModal.style.display = "none"
-    } else {bookInfoModal.style.display = "flex"
-    }
+    bookInfoModal.style.display = bookInfoModal.style.display === "flex" ? "none" : "flex"
 }
 
 function displayBookInfo(element) {
     for (let i=0; i<(library.length); i++) {
         if (library[i].title === element.parentElement.title) {
-            bookInfoTitle.textContent = `${library[i].title}`
-            bookInfoAuthor.textContent = `${library[i].author}`
-            bookInfoPages.textContent = `${library[i].pages}`
-            bookInfoRead.textContent = `${library[i].read}`
+            infoTitle.textContent = `${library[i].title}`
+            infoAuthor.textContent = `${library[i].author}`
+            infoPages.textContent = `${library[i].pages}`
+            infoRead.textContent = `${library[i].read}`
             toggleBookInfoModal()
         }
     }
