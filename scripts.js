@@ -29,15 +29,17 @@ function openNewBookModal() {
 
 newBookModalCloseButton.addEventListener("click", closeNewBookModal)
 
-function Book(title,author,pages,read) {
-    this.title = title
-    this.author = author
-    this.pages = pages
-    this.read = read
-    this.toggleRead = function() {
-        if (this.read === "read") {
-            this.read = "not read"
-        } else this.read = "read"
+class Book {
+    constructor (title,author,pages,read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+        this.toggleRead = function() {
+            if (this.read === "read") {
+                this.read = "not read"
+            } else this.read = "read"
+        }
     }
 }
 
