@@ -1,7 +1,6 @@
 let library = []
 const libraryGrid = document.getElementById(`library-grid`)
 
-
 const newBookModal = document.getElementById(`new-book-modal`)
 const formTitle = document.getElementById(`title`)
 const formAuthor = document.getElementById(`author`)
@@ -14,11 +13,6 @@ const infoTitle = document.getElementById(`book-info-title`)
 const infoAuthor = document.getElementById(`book-info-author`)
 const infoPages = document.getElementById(`book-info-pages`)
 const infoRead = document.getElementById(`book-info-read`)
-
-function toggleNewBookModal() {
-    clearForm()
-    newBookModal.style.display = newBookModal.style.display === "flex" ? "none" : "flex"
-}
 
 class Book {
     constructor (title,author,pages,read) {
@@ -39,11 +33,9 @@ function addBook() {
     library.push(book)
 }
 
-function clearForm() {
-    formTitle.value = ""
-    formAuthor.value = ""
-    formPages.value = ""
-    formRead.value = "not read"
+function toggleNewBookModal() {
+    clearForm()
+    newBookModal.style.display = newBookModal.style.display === "flex" ? "none" : "flex"
 }
 
 function generateBookElement() {
@@ -73,6 +65,13 @@ function generateBookElement() {
     libraryGrid.appendChild(bookElement)
 }
 
+function clearForm() {
+    formTitle.value = ""
+    formAuthor.value = ""
+    formPages.value = ""
+    formRead.value = "not read"
+}
+
 function submitBookForm(event) {
     event.preventDefault()   
     addBook()
@@ -92,11 +91,7 @@ function toggleBookRead(element) {
             library[i].toggleRead()
         }
     }
-    if (element.textContent === "not read") {
-        element.textContent = "read"
-    } else {
-        element.textContent = "not read"
-    }
+    element.textContent = element.textContent === "not read" ? "read" : "not read"
 }
 
 function toggleInfoModal() {
