@@ -28,7 +28,7 @@
             <input type="number" id="pages" minlength="1" required>
             <label for="read-status">Read status</label>
             <select name="read status" id="read-status">
-                <option value="not read">not read</option>
+                <option value="unread">unread</option>
                 <option value="read">read</option>
             </select>
             <button id="submit-book" value="Add book">Add Book</button>
@@ -37,14 +37,22 @@
     <div id = "book-info-modal">
         <div id = "book-info">
             <button class="close-modal" onclick="toggleInfoModal()">×</button>
-            <h4>Title</h4>
-            <div id = "book-info-title"></div>
-            <h4>Author</h4>
-            <div id = "book-info-author"></div>
-            <h4>Pages</h4>
-            <div id = "book-info-pages"></div>
-            <h4>Read status</h4>
-            <div id = "book-info-read"></div>
+            <div>
+                <h4>Title</h4>
+                <div id = "book-info-title"></div>
+            </div>
+            <div>
+                <h4>Author</h4>
+                <div id = "book-info-author"></div>
+            </div>
+            <div>
+                <h4>Pages</h4>
+                <div id = "book-info-pages"></div>
+            </div>
+            <div>
+                <h4>Read status</h4>
+                <div id = "book-info-read"></div>
+            </div>
         </div>
     </div>
     <script src="scripts.js"></script>

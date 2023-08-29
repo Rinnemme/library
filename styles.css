@@ -49,7 +49,7 @@ button:hover {
 .book {
     width:150px;
     height:200px;
-    background-color:rgb(100,100,100);
+    border-radius:3px;
     padding: 40px 10px 10px 10px;
     display:flex;
     flex-direction:column;
@@ -77,25 +77,43 @@ button:hover {
     bottom:8px;
 }
 
-.toggle-read {
+.book>.toggle-read {
     border-radius:2px;
-    background-color:black;
+    border:none;
     position:absolute;
     justify-self:center;
 }
 
-.book-remove {
-    background-color:rgb(193, 80, 80);
+.book>.toggle-read:hover {
+    background-color: rgb(40, 40, 40) !important;
+    transition:.2s ease-in;
+}
+
+.book>.book-remove {
     position:absolute;
     right:8px;
     font-size:1.2em;
 }
 
-.book-info {
-    background-color:rgb(75, 74, 74);
+.book>.book-remove:hover {
+    background-color:rgb(238, 135, 135) !important;
+    border: 1px solid rgb(142, 41, 41) !important;
+    color:rgb(142, 41, 41) !important;
+    transition:.2s ease-in;
+}
+
+.book>.book-info {
+    font-weight:bold;
     position:absolute;
     left:8px;
     font-size:.8em;
+}
+
+.book>.book-info:hover {
+    background-color: white !important;
+    border: 1px solid rgb(140, 140, 140) !important;
+    color:rgb(140, 140, 140) !important;
+    transition:.2s ease-in;
 }
 
 .book-info,
@@ -122,15 +140,19 @@ button:hover {
     justify-content:center;
     align-items:center;
     background-color:white;
-    padding:20px;
+    padding:30px;
     width:min(300px,100%);
     position:relative;
-    box-shadow: 2px 2px 5px rgb(162, 162, 162);
+    box-shadow: 2px 2px 5px rgb(190, 190, 190);
+}
+
+#book-info {
+    gap:10px;
 }
 
 #book-info>.close-modal,
 #new-book-form>.close-modal {
-    background-color:rgb(195, 104, 104);
+    background-color:rgb(226, 130, 130);
     position:absolute;
     margin:0;
     top:10px;
@@ -162,4 +184,9 @@ button:hover {
     width:fit-content;
     margin-top:30px;
     margin-bottom:15px;
+}
+
+h4 {
+    margin:0;
+    line-height:2em;
 }
