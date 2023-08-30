@@ -53,6 +53,7 @@ button:hover {
     grid-template-columns: repeat(auto-fit, 170px);
     justify-content:center;
     margin-top:40px;
+    margin-bottom:50px;
     padding:0px 40px 40px 60px;
     width:100%;
 }
