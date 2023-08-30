@@ -1,18 +1,21 @@
 let library = []
-const libraryGrid = document.getElementById(`library-grid`)
+const libraryGrid = document.getElementById('library-grid')
 
-const newBookModal = document.getElementById(`new-book-modal`)
-const formTitle = document.getElementById(`title`)
-const formAuthor = document.getElementById(`author`)
-const formPages = document.getElementById(`pages`)
-const formRead = document.getElementById(`read-status`)
-const submitButton = document.getElementById(`submit-book`)
+const newBookModal = document.getElementById('new-book-modal')
+const formTitle = document.getElementById('title')
+const formAuthor = document.getElementById('author')
+const formPages = document.getElementById('pages')
+const formRead = document.getElementById('read-status')
+const submitButton = document.getElementById('submit-book')
 
-const infoModal = document.getElementById(`book-info-modal`)
-const infoTitle = document.getElementById(`book-info-title`)
-const infoAuthor = document.getElementById(`book-info-author`)
-const infoPages = document.getElementById(`book-info-pages`)
-const infoRead = document.getElementById(`book-info-read`)
+const infoModal = document.getElementById('book-info-modal')
+const infoTitle = document.getElementById('book-info-title')
+const infoAuthor = document.getElementById('book-info-author')
+const infoPages = document.getElementById('book-info-pages')
+const infoRead = document.getElementById('book-info-read')
+
+const sorter = document.getElementById('sort-by')
+const displayFilter = document.getElementById('show')
 
 const lightColors = [
     '#FFA9A9', 
@@ -103,7 +106,30 @@ const sort = (() => {
         rewriteGrid (library)
     }
 
-    return {byTitleAtoZ, byTitleZtoA, byShortest, byLongest, byAuthorAtoZ, byAuthorZtoA}
+    const basedOnValue = (element) => {
+        switch (element.value) {
+            case 'Title A-Z':
+                byTitleAtoZ()
+                break;
+            case 'Title Z-A':
+                byTitleZtoA()
+                break;
+            case 'Author A-Z':
+                byAuthorAtoZ()
+                break;
+            case 'Author Z-A':
+                byAuthorZtoA()
+                break;
+            case 'Longest':
+                byLongest()
+                break;
+            case 'Shortest':
+                byShortest()
+                break;
+        }
+    }
+
+    return {basedOnValue}
 })
 
 const storage = (() => {

@@ -190,3 +190,14 @@ h4 {
     margin:0;
     line-height:2em;
 }
+
+#sort-by,
+#show {
+    background-color: lightgray;
+    border:none;
+    border-radius:5px;
+    padding:4px 8px 4px 8px;
+    width:100px;
+    margin-top:20px;
+    text-align:center;
+}

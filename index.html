@@ -15,6 +15,23 @@
     <div id="container">
         <h1>Welcome to your library</h1>
         <button id="add-book" onclick="toggleNewBookModal()">Add Book</button>
+        <div id="sort buttons">
+            <select name="sort-by" id="sort-by" onchange="sort().basedOnValue(this)">
+                <option value="" selected disabled>Sort By:</option>
+                <option value="Title A-Z">Title ↑</option>
+                <option value="Title Z-A">Title ↓</option>
+                <option value="Author A-Z">Author ↑</option>
+                <option value="Author Z-A">Author ↓</option>
+                <option value="Longest">Longest</option>
+                <option value="Shortest">Shortest</option>
+            </select>
+            <select name="show" id="show">
+                <option value="" selected disabled>Display:</option>
+                <option value="All">All</option>
+                <option value="Read Only">Read</option>
+                <option value="Unread Only">Unread</option>
+            </select>
+        </div>
         <div id="library-grid"></div>
     </div>
     <div id="new-book-modal">
