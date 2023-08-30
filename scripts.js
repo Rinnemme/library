@@ -65,29 +65,42 @@ function toggleNewBookModal() {
     newBookModal.style.display = newBookModal.style.display === 'flex' ? 'none' : 'flex'
 }
 
+function rewriteGrid (array) {
+    libraryGrid.innerHTML = ""
+    array.forEach (book => {
+        libraryGrid.appendChild(newBook().generate(book).bookElement)
+    })
+}
+
 const sort = (() => {
     const byTitleAtoZ = () => {
         library.sort((a,b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1)
+        rewriteGrid (library)
     }
 
     const byTitleZtoA = () => {
         library.sort((a,b) => a.title.toLowerCase() < b.title.toLowerCase() ? 1 : -1)
+        rewriteGrid (library)
     }
 
     const byAuthorAtoZ = () => {
         library.sort((a,b) => a.author.toLowerCase() > b.author.toLowerCase() ? 1 : -1)
+        rewriteGrid (library)
     }
 
     const byAuthorZtoA = () => {
         library.sort((a,b) => a.author.toLowerCase() < b.author.toLowerCase() ? 1 : -1)
+        rewriteGrid (library)
     }
 
     const byShortest = () => {
         library.sort((a,b) => a.pages > b.pages ? 1 : -1)
+        rewriteGrid (library)
     }
 
     const byLongest = () => {
         library.sort((a,b) => a.pages < b.pages ? 1 : -1)
+        rewriteGrid (library)
     }
 
     return {byTitleAtoZ, byTitleZtoA, byShortest, byLongest, byAuthorAtoZ, byAuthorZtoA}
