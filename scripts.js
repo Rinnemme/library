@@ -77,6 +77,15 @@ const storage = (() => {
                 const book = new Book(`${element.getAttribute('title')}`,`${element.getAttribute('author')}`,`${element.getAttribute('pages')}`,`${element.getAttribute('read')}`)
                 library.push(book)
             })
+            Array.from(document.querySelectorAll(".book-info")).forEach (element => {
+                element.onclick = function () {displayBookInfo(this)}
+            })
+            Array.from(document.querySelectorAll(".toggle-read")).forEach (element => {
+                element.onclick = function () {toggleBookRead(this)}
+            })
+            Array.from(document.querySelectorAll(".book-remove")).forEach (element => {
+                element.onclick = function () {removeBook(this.parentElement)}
+            })
         }
     }
 
