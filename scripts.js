@@ -72,6 +72,12 @@ const storage = (() => {
 
     const load = () => {
         libraryGrid.innerHTML = localStorage.getItem("library") ? localStorage.getItem("library") : libraryGrid.innterHTML
+        if (libraryGrid.innerHTML !== "") {
+            Array.from(document.querySelectorAll(".book")).forEach (element => {
+                const book = new Book(`${element.getAttribute('title')}`,`${element.getAttribute('author')}`,`${element.getAttribute('pages')}`,`${element.getAttribute('read')}`)
+                library.push(book)
+            })
+        }
     }
 
     return {save, load}
@@ -87,10 +93,10 @@ const newBook = (() => {
         const bookElement = document.createElement('div')
         bookElement.classList.add('book')
         bookElement.textContent = `${book.title}`
-        bookElement.title = book.title
-        bookElement.author = book.author
-        bookElement.pages = book.pages
-        bookElement.read = book.read
+        bookElement.setAttribute ('title', `${book.title}`)
+        bookElement.setAttribute ('author', `${book.author}`)
+        bookElement.setAttribute ('pages', `${book.pages}`)
+        bookElement.setAttribute ('read', `${book.read}`)
         bookElement.style.backgroundColor = `${lightColor}`
         bookElement.style.color = `${darkColor}`
         const bookAuthor = document.createElement('p')
