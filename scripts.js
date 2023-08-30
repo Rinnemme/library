@@ -65,6 +65,34 @@ function toggleNewBookModal() {
     newBookModal.style.display = newBookModal.style.display === 'flex' ? 'none' : 'flex'
 }
 
+const sort = (() => {
+    const byTitleAtoZ = () => {
+        library.sort((a,b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1)
+    }
+
+    const byTitleZtoA = () => {
+        library.sort((a,b) => a.title.toLowerCase() < b.title.toLowerCase() ? 1 : -1)
+    }
+
+    const byAuthorAtoZ = () => {
+        library.sort((a,b) => a.author.toLowerCase() > b.author.toLowerCase() ? 1 : -1)
+    }
+
+    const byAuthorZtoA = () => {
+        library.sort((a,b) => a.author.toLowerCase() < b.author.toLowerCase() ? 1 : -1)
+    }
+
+    const byShortest = () => {
+        library.sort((a,b) => a.pages > b.pages ? 1 : -1)
+    }
+
+    const byLongest = () => {
+        library.sort((a,b) => a.pages < b.pages ? 1 : -1)
+    }
+
+    return {byTitleAtoZ, byTitleZtoA, byShortest, byLongest, byAuthorAtoZ, byAuthorZtoA}
+})
+
 const storage = (() => {
     const save = () => {
         localStorage.setItem ("library", libraryGrid.innerHTML)
