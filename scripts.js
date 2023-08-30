@@ -174,7 +174,7 @@ const storage = (() => {
     }
 
     const load = () => {
-        libraryGrid.innerHTML = localStorage.getItem("library") ? localStorage.getItem("library") : libraryGrid.innterHTML
+        libraryGrid.innerHTML = localStorage.getItem("library") ? localStorage.getItem("library") : ""
         if (libraryGrid.innerHTML !== "") {
             Array.from(document.querySelectorAll(".book")).forEach (element => {
                 const book = new Book(`${element.getAttribute('title')}`,`${element.getAttribute('author')}`,`${element.getAttribute('pages')}`,`${element.getAttribute('read')}`)
@@ -256,6 +256,7 @@ const newBook = (() => {
     const addFromForm = () => {
         library.push(book)
         libraryGrid.appendChild(generate(book).bookElement)
+        storage().save()
     }
 
     return {addFromForm, generate}
@@ -278,6 +279,7 @@ function submitBookForm(event) {
 function removeBook(element) {
     library = library.filter (book => book.title !== `${element.title}`)
     element.parentElement.removeChild(element)
+    storage().save()
 }
 
 function toggleBookRead(element) {
@@ -288,6 +290,7 @@ function toggleBookRead(element) {
     }
     element.textContent = element.textContent === 'unread' ? 'read' : 'unread'
     element.parentElement.setAttribute('read',`${element.textContent}`)
+    storage().save()
 }
 
 function toggleInfoModal() {
@@ -304,4 +307,9 @@ function displayBookInfo(element) {
             toggleInfoModal()
         }
     }
+}
+
+function loadDemo() {
+    localStorage.setItem('library', `<div class="book" title="A Tale of Two Cities" author="Charles Dickens" pages="448" read="unread" style="background-color: rgb(217, 169, 255); color: rgb(88, 31, 132);">A Tale of Two Cities<p>by Charles Dickens</p><button class="book-info" style="border: 1px solid rgb(88, 31, 132); background-color: rgb(217, 169, 255); color: rgb(88, 31, 132);">ⓘ</button><button class="toggle-read" style="background-color: rgb(88, 31, 132); color: rgb(217, 169, 255);">unread</button><button class="book-remove" title="Remove A Tale of Two Cities" style="border: 1px solid rgb(88, 31, 132); background-color: rgb(217, 169, 255); color: rgb(88, 31, 132);">×</button></div><div class="book" title="To Kill A Mockingbird" author="Harper Lee" pages="336" read="unread" style="background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">To Kill A Mockingbird<p>by Harper Lee</p><button class="book-info" style="border: 1px solid rgb(137, 31, 75); background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">ⓘ</button><button class="toggle-read" style="background-color: rgb(137, 31, 75); color: rgb(255, 169, 205);">unread</button><button class="book-remove" title="Remove To Kill A Mockingbird" style="border: 1px solid rgb(137, 31, 75); background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">×</button></div><div class="book" title="The Catcher in the Rye" author="J. D. Salinger" pages="288" read="unread" style="background-color: rgb(202, 255, 169); color: rgb(71, 132, 33);">The Catcher in the Rye<p>by J. D. Salinger</p><button class="book-info" style="border: 1px solid rgb(71, 132, 33); background-color: rgb(202, 255, 169); color: rgb(71, 132, 33);">ⓘ</button><button class="toggle-read" style="background-color: rgb(71, 132, 33); color: rgb(202, 255, 169);">unread</button><button class="book-remove" title="Remove The Catcher in the Rye" style="border: 1px solid rgb(71, 132, 33); background-color: rgb(202, 255, 169); color: rgb(71, 132, 33);">×</button></div><div class="book" title="Brave New World" author="Aldous Huxley" pages="218" read="unread" style="background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">Brave New World<p>by Aldous Huxley</p><button class="book-info" style="border: 1px solid rgb(137, 31, 75); background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">ⓘ</button><button class="toggle-read" style="background-color: rgb(137, 31, 75); color: rgb(255, 169, 205);">unread</button><button class="book-remove" title="Remove Brave New World" style="border: 1px solid rgb(137, 31, 75); background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">×</button></div><div class="book" title="1984" author="George Orwell" pages="352" read="unread" style="background-color: rgb(202, 255, 169); color: rgb(71, 132, 33);">1984<p>by George Orwell</p><button class="book-info" style="border: 1px solid rgb(71, 132, 33); background-color: rgb(202, 255, 169); color: rgb(71, 132, 33);">ⓘ</button><button class="toggle-read" style="background-color: rgb(71, 132, 33); color: rgb(202, 255, 169);">unread</button><button class="book-remove" title="Remove 1984" style="border: 1px solid rgb(71, 132, 33); background-color: rgb(202, 255, 169); color: rgb(71, 132, 33);">×</button></div><div class="book" title="Of Mice and Men" author="John Steinbeck" pages="112" read="unread" style="background-color: rgb(217, 169, 255); color: rgb(88, 31, 132);">Of Mice and Men<p>by John Steinbeck</p><button class="book-info" style="border: 1px solid rgb(88, 31, 132); background-color: rgb(217, 169, 255); color: rgb(88, 31, 132);">ⓘ</button><button class="toggle-read" style="background-color: rgb(88, 31, 132); color: rgb(217, 169, 255);">unread</button><button class="book-remove" title="Remove Of Mice and Men" style="border: 1px solid rgb(88, 31, 132); background-color: rgb(217, 169, 255); color: rgb(88, 31, 132);">×</button></div><div class="book" title="Lord of the Flies" author="William Golding" pages="224" read="unread" style="background-color: rgb(169, 211, 255); color: rgb(35, 85, 137);">Lord of the Flies<p>by William Golding</p><button class="book-info" style="border: 1px solid rgb(35, 85, 137); background-color: rgb(169, 211, 255); color: rgb(35, 85, 137);">ⓘ</button><button class="toggle-read" style="background-color: rgb(35, 85, 137); color: rgb(169, 211, 255);">unread</button><button class="book-remove" title="Remove Lord of the Flies" style="border: 1px solid rgb(35, 85, 137); background-color: rgb(169, 211, 255); color: rgb(35, 85, 137);">×</button></div><div class="book" title="The Great Gatsby" author="F. Scott Fitzgerald" pages="208" read="unread" style="background-color: rgb(255, 169, 231); color: rgb(139, 29, 108);">The Great Gatsby<p>by F. Scott Fitzgerald</p><button class="book-info" style="border: 1px solid rgb(139, 29, 108); background-color: rgb(255, 169, 231); color: rgb(139, 29, 108);">ⓘ</button><button class="toggle-read" style="background-color: rgb(139, 29, 108); color: rgb(255, 169, 231);">unread</button><button class="book-remove" title="Remove The Great Gatsby" style="border: 1px solid rgb(139, 29, 108); background-color: rgb(255, 169, 231); color: rgb(139, 29, 108);">×</button></div><div class="book" title="A Clockwork Orange" author="Anthony Burgess" pages="240" read="unread" style="background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">A Clockwork Orange<p>by Anthony Burgess</p><button class="book-info" style="border: 1px solid rgb(137, 31, 75); background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">ⓘ</button><button class="toggle-read" style="background-color: rgb(137, 31, 75); color: rgb(255, 169, 205);">unread</button><button class="book-remove" title="Remove A Clockwork Orange" style="border: 1px solid rgb(137, 31, 75); background-color: rgb(255, 169, 205); color: rgb(137, 31, 75);">×</button></div>`)
+    storage().load()
 }
