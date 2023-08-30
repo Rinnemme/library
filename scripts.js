@@ -98,7 +98,7 @@ const newBook = (() => {
     const lightColor = lightColors[colorIndex]
     const darkColor = darkColors[colorIndex]
 
-    const generate = (() => {
+    const generate = ((book) => {
         const bookElement = document.createElement('div')
         bookElement.classList.add('book')
         bookElement.textContent = `${book.title}`
@@ -152,10 +152,10 @@ const newBook = (() => {
 
     const addFromForm = () => {
         library.push(book)
-        libraryGrid.appendChild(generate().bookElement)
+        libraryGrid.appendChild(generate(book).bookElement)
     }
 
-    return {addFromForm}
+    return {addFromForm, generate}
 }) 
 
 function clearForm() {
