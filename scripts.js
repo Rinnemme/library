@@ -65,6 +65,18 @@ function toggleNewBookModal() {
     newBookModal.style.display = newBookModal.style.display === 'flex' ? 'none' : 'flex'
 }
 
+const storage = (() => {
+    const save = () => {
+        localStorage.setItem ("library", libraryGrid.innerHTML)
+    }
+
+    const load = () => {
+        libraryGrid.innerHTML = localStorage.getItem("library") ? localStorage.getItem("library") : libraryGrid.innterHTML
+    }
+
+    return {save, load}
+})
+
 const newBook = (() => {
     const book = new Book(`${formTitle.value}`,`${formAuthor.value}`,`${formPages.value}`,`${formRead.value}`)
     const colorIndex = Math.floor(Math.random()*lightColors.length)
@@ -76,6 +88,9 @@ const newBook = (() => {
         bookElement.classList.add('book')
         bookElement.textContent = `${book.title}`
         bookElement.title = book.title
+        bookElement.author = book.author
+        bookElement.pages = book.pages
+        bookElement.read = book.read
         bookElement.style.backgroundColor = `${lightColor}`
         bookElement.style.color = `${darkColor}`
         const bookAuthor = document.createElement('p')
