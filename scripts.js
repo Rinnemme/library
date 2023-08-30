@@ -75,6 +75,42 @@ function rewriteGrid (array) {
     })
 }
 
+const display = (() => {
+    const all = () => {
+        document.querySelectorAll('.book').forEach (book => {
+            book.style.display = 'flex' 
+        })
+    }
+
+    const read = () => {
+        document.querySelectorAll('.book').forEach (book => {
+            book.style.display = book.getAttribute('read') === 'read' ? 'flex' : 'none'
+        })
+    }
+
+    const unread = () => {
+        document.querySelectorAll('.book').forEach (book => {
+            book.style.display = book.getAttribute('read') === 'unread' ? 'flex' : 'none'
+        })
+    }
+
+    const basedOnValue = (element) => {
+        switch (element.value) {
+            case 'All':
+                all()
+                break;
+            case 'Read':
+                read()
+                break;
+            case 'Unread':
+                unread()
+                break;
+        }
+    }
+
+    return {basedOnValue}
+})
+
 const sort = (() => {
     const byTitleAtoZ = () => {
         library.sort((a,b) => a.title.toLowerCase() > b.title.toLowerCase() ? 1 : -1)

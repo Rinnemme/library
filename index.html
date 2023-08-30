@@ -25,11 +25,11 @@
                 <option value="Longest">Longest</option>
                 <option value="Shortest">Shortest</option>
             </select>
-            <select name="show" id="show">
+            <select name="show" id="show" onchange="display().basedOnValue(this)">
                 <option value="" selected disabled>Display:</option>
                 <option value="All">All</option>
-                <option value="Read Only">Read</option>
-                <option value="Unread Only">Unread</option>
+                <option value="Read">Read</option>
+                <option value="Unread">Unread</option>
             </select>
         </div>
         <div id="library-grid"></div>
