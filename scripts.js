@@ -64,6 +64,7 @@ function toggleNewBookModal() {
     clearForm()
     newBookModal.style.display = newBookModal.style.display === 'flex' ? 'none' : 'flex'
 }
+
 const newBook = (() => {
     const book = new Book(`${formTitle.value}`,`${formAuthor.value}`,`${formPages.value}`,`${formRead.value}`)
     const colorIndex = Math.floor(Math.random()*lightColors.length)
@@ -145,23 +146,6 @@ function submitBookForm(event) {
     clearForm()
 }
 
-function removeBook(element) {
-    library = library.filter (book => book.title !== `${element.title}`)
-    element.parentElement.removeChild(element)
-    storage().save()
-}
-
-function toggleBookRead(element) {
-    for (let i=0; i<(library.length); i++) {
-        if (library[i].title === element.parentElement.title) {
-            library[i].toggleRead()
-        }
-    }
-    element.textContent = element.textContent === 'unread' ? 'read' : 'unread'
-    element.parentElement.setAttribute('read',`${element.textContent}`)
-    storage().save()
-}
-
 function toggleInfoModal() {
     infoModal.style.display = infoModal.style.display === 'flex' ? 'none' : 'flex'
 }
@@ -176,6 +160,23 @@ function displayBookInfo(element) {
             toggleInfoModal()
         }
     }
+}
+
+function toggleBookRead(element) {
+    for (let i=0; i<(library.length); i++) {
+        if (library[i].title === element.parentElement.title) {
+            library[i].toggleRead()
+        }
+    }
+    element.textContent = element.textContent === 'unread' ? 'read' : 'unread'
+    element.parentElement.setAttribute('read',`${element.textContent}`)
+    storage().save()
+}
+
+function removeBook(element) {
+    library = library.filter (book => book.title !== `${element.title}`)
+    element.parentElement.removeChild(element)
+    storage().save()
 }
 
 function rewriteGrid (array) {
