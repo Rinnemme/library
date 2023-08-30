@@ -184,6 +184,7 @@ function toggleBookRead(element) {
         }
     }
     element.textContent = element.textContent === 'unread' ? 'read' : 'unread'
+    element.parentElement.setAttribute('read',`${element.textContent}`)
 }
 
 function toggleInfoModal() {
