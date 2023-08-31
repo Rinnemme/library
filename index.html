@@ -15,22 +15,28 @@
     <div id="container">
         <h1>Welcome to your library</h1>
         <button id="add-book" onclick="toggleNewBookModal()">Add Book</button>
-        <div id="sort buttons">
-            <select name="sort-by" id="sort-by" onchange="sort().basedOnValue(this)">
-                <option value="" selected disabled>Sort By:</option>
-                <option value="Title A-Z">Title ↑</option>
-                <option value="Title Z-A">Title ↓</option>
-                <option value="Author A-Z">Author ↑</option>
-                <option value="Author Z-A">Author ↓</option>
-                <option value="Longest">Longest</option>
-                <option value="Shortest">Shortest</option>
-            </select>
-            <select name="show" id="show" onchange="display().basedOnValue(this)">
-                <option value="" selected disabled>Display:</option>
-                <option value="All">All</option>
-                <option value="Read">Read</option>
-                <option value="Unread">Unread</option>
-            </select>
+        <div id="sort-buttons">
+            <div class="group">
+                <label for="sort-by">Sort by:</label>
+                <select name="sort-by" id="sort-by" onchange="sort().basedOnValue(this)">
+                    <option value="" selected disabled>--</option>
+                    <option value="Title A-Z">Title ↑</option>
+                    <option value="Title Z-A">Title ↓</option>
+                    <option value="Author A-Z">Author ↑</option>
+                    <option value="Author Z-A">Author ↓</option>
+                    <option value="Longest">Longest</option>
+                    <option value="Shortest">Shortest</option>
+                </select>
+            </div>
+            <div class="group">
+                <label for="show">Display:</label>
+                <select name="show" id="show" onchange="display().basedOnValue(this)">
+                    <!-- <option value="" selected disabled>Display:</option> -->
+                    <option value="All" selected>All</option>
+                    <option value="Read">Read</option>
+                    <option value="Unread">Unread</option>
+                </select>
+            </div>
         </div>
         <div id="library-grid"></div>
     </div>

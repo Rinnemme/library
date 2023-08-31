@@ -1,5 +1,6 @@
 let library = []
 const libraryGrid = document.getElementById('library-grid')
+const sortAndFilter = document.getElementById('sort-buttons')
 
 const newBookModal = document.getElementById('new-book-modal')
 const formTitle = document.getElementById('title')
@@ -15,37 +16,37 @@ const infoPages = document.getElementById('book-info-pages')
 const infoRead = document.getElementById('book-info-read')
 
 const lightColors = [
-    '#FFA9A9', 
-    '#FFC0A9', 
-    '#FFDDA9', 
-    '#CAFFA9', 
-    '#A9FFBC', 
-    '#A9FFE5', 
-    '#A9F2FF', 
-    '#A9D3FF', 
-    '#A9AFFF', 
-    '#B8A9FF', 
-    '#D9A9FF', 
-    '#F6A9FF', 
-    '#FFA9E7', 
-    '#FFA9CD'
+    '#F68282', 
+    '#F69A82', 
+    '#F6BD82', 
+    '#F6E082', 
+    '#82F6AD', 
+    '#82F6D7', 
+    '#82E1F6', 
+    '#82ADF6', 
+    '#8882F6', 
+    '#AB82F6', 
+    '#D182F6', 
+    '#F482F6', 
+    '#F682E0', 
+    '#F682B6'
 ]
 
 const darkColors = [
-    '#862525', 
-    '#8B3F23', 
-    '#8B6120', 
-    '#478421', 
-    '#1D7D32', 
-    '#1F8969', 
-    '#1D7382', 
-    '#235589', 
-    '#202784', 
-    '#34228B', 
-    '#581F84', 
-    '#7C2186', 
-    '#8B1D6C', 
-    '#891F4B'
+    '#801212', 
+    '#862C14', 
+    '#864E14', 
+    '#9D8311', 
+    '#0E6D31', 
+    '#107B5E', 
+    '#116D82', 
+    '#143D82', 
+    '#16107B', 
+    '#3E1786', 
+    '#5E1580', 
+    '#801182', 
+    '#7D1469', 
+    '#791341'
 ]
 
 class Book {

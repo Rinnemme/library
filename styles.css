@@ -35,6 +35,22 @@ button:hover {
     width: min(900px,100%);
 }
 
+#sort-buttons {
+    display:flex;
+    flex-direction:row;
+    gap:20px;
+    margin-top:20px;
+}
+
+#sort-buttons>.group {
+    display:flex;
+    flex-direction:column;
+}
+
+#sort-buttons>.group>select {
+    margin-top:10px;
+}
+
 #sort-by,
 #show {
     background-color: lightgray;
@@ -114,7 +130,6 @@ button:hover {
 }
 
 .book>.book-info {
-    font-weight:bold;
     font-size:.8em;
     left:8px;
     position:absolute;
