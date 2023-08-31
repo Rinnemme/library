@@ -61,6 +61,10 @@ class Book {
     }
 }
 
+function determineSortFilterDisplay() {
+    sortAndFilter.style.display = library.length > 3 ? 'flex' : 'none'
+}
+
 function toggleNewBookModal() {
     clearForm()
     newBookModal.style.display = newBookModal.style.display === 'flex' ? 'none' : 'flex'
@@ -127,6 +131,7 @@ const newBook = (() => {
     const addFromForm = () => {
         library.push(book)
         libraryGrid.appendChild(generate(book).bookElement)
+        determineSortFilterDisplay()
         storage().save()
     }
 
@@ -177,6 +182,7 @@ function toggleBookRead(element) {
 function removeBook(element) {
     library = library.filter (book => book.title !== `${element.title}`)
     element.parentElement.removeChild(element)
+    determineSortFilterDisplay()
     storage().save()
 }
 
@@ -301,6 +307,7 @@ const storage = (() => {
             Array.from(document.querySelectorAll(".book-remove")).forEach (element => {
                 element.onclick = function () {removeBook(this.parentElement)}
             })
+            determineSortFilterDisplay()
         }
     }
 
