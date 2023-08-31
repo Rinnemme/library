@@ -307,8 +307,8 @@ const storage = (() => {
             Array.from(document.querySelectorAll(".book-remove")).forEach (element => {
                 element.onclick = function () {removeBook(this.parentElement)}
             })
-            determineSortFilterDisplay()
         }
+        determineSortFilterDisplay()
     }
 
     return {save, load}
