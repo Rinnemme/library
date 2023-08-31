@@ -4,6 +4,7 @@
 }
 
 body {
+    color:rgb(40, 40, 40);
     align-items:center;
     background-color:white;
     display:flex;
@@ -15,7 +16,7 @@ body {
 }
 
 button {
-    background-color:black;
+    background-color:rgb(40, 40, 40);
     border:none;
     border-radius:5px;
     color:white;
@@ -49,6 +50,7 @@ button:hover {
 
 #sort-buttons>.group>select {
     margin-top:10px;
+    color: rgb(40, 40, 40);
 }
 
 #sort-by,
@@ -68,7 +70,7 @@ button:hover {
     grid-auto-rows: 200px;
     grid-template-columns: repeat(auto-fit, 170px);
     justify-content:center;
-    margin-top:40px;
+    margin-top:60px;
     margin-bottom:50px;
     padding:0px 40px 40px 60px;
     width:100%;
