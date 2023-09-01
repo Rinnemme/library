@@ -31,7 +31,6 @@
             <div class="group">
                 <label for="show">Display:</label>
                 <select name="show" id="show" onchange="display().basedOnValue(this)">
-                    <!-- <option value="" selected disabled>Display:</option> -->
                     <option value="All" selected>All</option>
                     <option value="Read">Read</option>
                     <option value="Unread">Unread</option>
@@ -54,6 +53,10 @@
                 <option value="unread">unread</option>
                 <option value="read">read</option>
             </select>
+            <label for="light-color">Book Color</label>
+            <input id="light-color-selector" name="light-color" type="color">
+            <label for="dark-color">Text Color</label>
+            <input id="dark-color-selector" name="dark-color" type="color">
             <button id="submit-book" value="Add book">Add Book</button>
         </form>
     </div>

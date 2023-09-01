@@ -17,40 +17,8 @@ const infoRead = document.getElementById('book-info-read')
 
 const filterSelector = document.getElementById('show')
 const sortSelector = document.getElementById('sort-by')
-
-const lightColors = [
-    '#F68282', 
-    '#F69A82', 
-    '#F6BD82', 
-    '#F6E082', 
-    '#82F6AD', 
-    '#82F6D7', 
-    '#82E1F6', 
-    '#82ADF6', 
-    '#8882F6', 
-    '#AB82F6', 
-    '#D182F6', 
-    '#F482F6', 
-    '#F682E0', 
-    '#F682B6'
-]
-
-const darkColors = [
-    '#801212', 
-    '#862C14', 
-    '#864E14', 
-    '#9D8311', 
-    '#0E6D31', 
-    '#107B5E', 
-    '#116D82', 
-    '#143D82', 
-    '#16107B', 
-    '#3E1786', 
-    '#5E1580', 
-    '#801182', 
-    '#7D1469', 
-    '#791341'
-]
+const lightColorSelector = document.getElementById('light-color-selector')
+const darkColorSelector = document.getElementById('dark-color-selector')
 
 class Book {
     constructor (title,author,pages,read) {
@@ -58,9 +26,6 @@ class Book {
         this.author = author
         this.pages = pages
         this.read = read
-        this.colorIndex = `${Math.floor(Math.random()*lightColors.length)}`
-        this.lightColor = lightColors[this.colorIndex]
-        this.darkColor = darkColors[this.colorIndex]
         this.toggleRead = function() {
             this.read = this.read === 'read' ? 'unread' : 'read'
         }
@@ -86,7 +51,6 @@ const buildElement = ((book) => {
         element.setAttribute ('author', `${book.author}`)
         element.setAttribute ('pages', `${book.pages}`)
         element.setAttribute ('read', `${book.read}`)
-        element.setAttribute ('colorIndex', `${book.colorIndex}`)
         element.setAttribute ('lightColor', `${book.lightColor}`)
         element.setAttribute ('darkColor', `${book.darkColor}`)
         element.style.backgroundColor = `${book.lightColor}`
@@ -146,6 +110,8 @@ function clearForm() {
 function submitBookForm(event) {
     event.preventDefault()   
     const book = new Book(`${formTitle.value}`,`${formAuthor.value}`,`${formPages.value}`,`${formRead.value}`)
+    book.lightColor = `${lightColorSelector.value}`
+    book.darkColor = `${darkColorSelector.value}`
     library.push(book)
     libraryGrid.appendChild(buildElement(book).newBook().element)
     determineSortFilterDisplay()
@@ -300,7 +266,6 @@ const storage = (() => {
         if (libraryGrid.innerHTML !== "") {
             Array.from(document.querySelectorAll(".book")).forEach (element => {
                 const book = new Book(`${element.getAttribute('title')}`,`${element.getAttribute('author')}`,`${element.getAttribute('pages')}`,`${element.getAttribute('read')}`)
-                book.colorIndex = `${element.getAttribute('colorIndex')}`
                 book.lightColor = `${element.getAttribute('lightColor')}`
                 book.darkColor = `${element.getAttribute('darkColor')}`
                 library.push(book)

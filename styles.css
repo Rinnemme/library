@@ -220,6 +220,14 @@ h4 {
     width:70%;
 }
 
+#new-book-form>#light-color-selector,
+#new-book-form>#dark-color-selector {
+    border-radius:3px;
+    height:25px;
+    margin-top:5px;
+    width:25px;
+}
+
 #new-book-form>button {
     margin-bottom:15px;
     margin-top:30px;
