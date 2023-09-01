@@ -58,6 +58,9 @@ class Book {
         this.author = author
         this.pages = pages
         this.read = read
+        this.colorIndex = `${Math.floor(Math.random()*lightColors.length)}`
+        this.lightColor = lightColors[this.colorIndex]
+        this.darkColor = darkColors[this.colorIndex]
         this.toggleRead = function() {
             this.read = this.read === 'read' ? 'unread' : 'read'
         }
@@ -73,37 +76,36 @@ function toggleNewBookModal() {
     newBookModal.style.display = newBookModal.style.display === 'flex' ? 'none' : 'flex'
 }
 
-const newBook = (() => {
-    const book = new Book(`${formTitle.value}`,`${formAuthor.value}`,`${formPages.value}`,`${formRead.value}`)
-    const colorIndex = Math.floor(Math.random()*lightColors.length)
-    const lightColor = lightColors[colorIndex]
-    const darkColor = darkColors[colorIndex]
+const buildElement = ((book) => {
 
-    const generate = ((book) => {
-        const bookElement = document.createElement('div')
-        bookElement.classList.add('book')
-        bookElement.textContent = `${book.title}`
-        bookElement.setAttribute ('title', `${book.title}`)
-        bookElement.setAttribute ('author', `${book.author}`)
-        bookElement.setAttribute ('pages', `${book.pages}`)
-        bookElement.setAttribute ('read', `${book.read}`)
-        bookElement.style.backgroundColor = `${lightColor}`
-        bookElement.style.color = `${darkColor}`
+    const bookElement = (() => {
+        const element = document.createElement('div')
+        element.classList.add('book')
+        element.textContent = `${book.title}`
+        element.setAttribute ('title', `${book.title}`)
+        element.setAttribute ('author', `${book.author}`)
+        element.setAttribute ('pages', `${book.pages}`)
+        element.setAttribute ('read', `${book.read}`)
+        element.setAttribute ('colorIndex', `${book.colorIndex}`)
+        element.setAttribute ('lightColor', `${book.lightColor}`)
+        element.setAttribute ('darkColor', `${book.darkColor}`)
+        element.style.backgroundColor = `${book.lightColor}`
+        element.style.color = `${book.darkColor}`
         const bookAuthor = document.createElement('p')
         bookAuthor.textContent = `by ${book.author}`
-        bookElement.appendChild(bookAuthor)
-        bookElement.appendChild(info().button)
-        bookElement.appendChild(read().button)
-        bookElement.appendChild(remove().button)
-        return {bookElement}
+        element.appendChild(bookAuthor)
+        element.appendChild(info().button)
+        element.appendChild(read().button)
+        element.appendChild(remove().button)
+        return {element}
     })
 
     const info = (() => {
         const button = document.createElement('button')
         button.textContent = 'ⓘ'
-        button.style.border = `1px solid ${darkColor}`
-        button.style.backgroundColor = `${lightColor}`
-        button.style.color = `${darkColor}`
+        button.style.border = `1px solid ${book.darkColor}`
+        button.style.backgroundColor = `${book.lightColor}`
+        button.style.color = `${book.darkColor}`
         button.classList.add('book-info')
         button.onclick = function () {displayBookInfo(this)}
         return {button}
@@ -113,8 +115,8 @@ const newBook = (() => {
         const button = document.createElement('button')
         button.textContent = `${book.read}`
         button.classList.add('toggle-read')
-        button.style.backgroundColor = `${darkColor}`
-        button.style.color = `${lightColor}`
+        button.style.backgroundColor = `${book.darkColor}`
+        button.style.color = `${book.lightColor}`
         button.onclick = function () {toggleBookRead(this)}
         return {button}
     })
@@ -122,25 +124,16 @@ const newBook = (() => {
     const remove = (() => {
         const button = document.createElement('button')
         button.textContent = '×'
-        button.style.border = `1px solid ${darkColor}`
-        button.style.backgroundColor = `${lightColor}`
-        button.style.color = `${darkColor}`
+        button.style.border = `1px solid ${book.darkColor}`
+        button.style.backgroundColor = `${book.lightColor}`
+        button.style.color = `${book.darkColor}`
         button.classList.add('book-remove')
         button.setAttribute('title',`Remove ${book.title}`)
         button.onclick = function () {removeBook(this.parentElement)}
         return {button}
     })
 
-    const addFromForm = () => {
-        library.push(book)
-        libraryGrid.appendChild(generate(book).bookElement)
-        determineSortFilterDisplay()
-        storage().save()
-        display().basedOnValue(filterSelector)
-        sort().basedOnValue(sortSelector)
-    }
-
-    return {addFromForm, generate}
+    return {bookElement}
 }) 
 
 function clearForm() {
@@ -152,7 +145,13 @@ function clearForm() {
 
 function submitBookForm(event) {
     event.preventDefault()   
-    newBook().addFromForm()
+    const book = new Book(`${formTitle.value}`,`${formAuthor.value}`,`${formPages.value}`,`${formRead.value}`)
+    library.push(book)
+    libraryGrid.appendChild(buildElement(book).bookElement().element)
+    determineSortFilterDisplay()
+    storage().save()
+    display().basedOnValue(filterSelector)
+    sort().basedOnValue(sortSelector)
     toggleNewBookModal()
     clearForm()
 }
@@ -194,7 +193,7 @@ function removeBook(element) {
 function rewriteGrid (array) {
     libraryGrid.innerHTML = ""
     array.forEach (book => {
-        libraryGrid.appendChild(newBook().generate(book).bookElement)
+        libraryGrid.appendChild(buildElement(book).bookElement().element)
     })
 }
 
@@ -301,6 +300,9 @@ const storage = (() => {
         if (libraryGrid.innerHTML !== "") {
             Array.from(document.querySelectorAll(".book")).forEach (element => {
                 const book = new Book(`${element.getAttribute('title')}`,`${element.getAttribute('author')}`,`${element.getAttribute('pages')}`,`${element.getAttribute('read')}`)
+                book.colorIndex = `${element.getAttribute('colorIndex')}`
+                book.lightColor = `${element.getAttribute('lightColor')}`
+                book.darkColor = `${element.getAttribute('darkColor')}`
                 library.push(book)
             })
             Array.from(document.querySelectorAll(".book-info")).forEach (element => {
