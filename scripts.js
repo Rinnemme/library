@@ -78,7 +78,7 @@ function toggleNewBookModal() {
 
 const buildElement = ((book) => {
 
-    const bookElement = (() => {
+    const newBook = (() => {
         const element = document.createElement('div')
         element.classList.add('book')
         element.textContent = `${book.title}`
@@ -133,7 +133,7 @@ const buildElement = ((book) => {
         return {button}
     })
 
-    return {bookElement}
+    return {newBook}
 }) 
 
 function clearForm() {
@@ -147,7 +147,7 @@ function submitBookForm(event) {
     event.preventDefault()   
     const book = new Book(`${formTitle.value}`,`${formAuthor.value}`,`${formPages.value}`,`${formRead.value}`)
     library.push(book)
-    libraryGrid.appendChild(buildElement(book).bookElement().element)
+    libraryGrid.appendChild(buildElement(book).newBook().element)
     determineSortFilterDisplay()
     storage().save()
     display().basedOnValue(filterSelector)
@@ -193,7 +193,7 @@ function removeBook(element) {
 function rewriteGrid (array) {
     libraryGrid.innerHTML = ""
     array.forEach (book => {
-        libraryGrid.appendChild(buildElement(book).bookElement().element)
+        libraryGrid.appendChild(buildElement(book).newBook().element)
     })
 }
 
