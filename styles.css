@@ -71,9 +71,9 @@ button:hover {
 
 #library-grid {
     display:grid;
-    gap:10px;
+    gap: 30px;
     grid-auto-rows: 200px;
-    grid-template-columns: repeat(auto-fit, 170px);
+    grid-template-columns: repeat(auto-fit, 150px);
     justify-content:center;
     margin-top:60px;
     margin-bottom:50px;
