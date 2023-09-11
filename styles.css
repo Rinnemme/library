@@ -111,6 +111,13 @@ button:hover {
     padding:5px 8px 5px 8px;
 }
 
+.book:hover {
+    box-shadow: 3px 3px 5px 0px lightgray;
+    scale: 1.03;
+    transition:0.3s;
+    cursor:default;
+}
+
 .book>.toggle-read {
     border:none;
     border-radius:2px;
