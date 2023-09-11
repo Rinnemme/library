@@ -3,6 +3,7 @@ const libraryGrid = document.getElementById('library-grid')
 const sortAndFilter = document.getElementById('sort-buttons')
 
 const newBookModal = document.getElementById('new-book-modal')
+const newBookForm = document.getElementById('new-book-form')
 const formTitle = document.getElementById('title')
 const formAuthor = document.getElementById('author')
 const formPages = document.getElementById('pages')
@@ -289,4 +290,33 @@ const storage = (() => {
 function loadDemo() {
     localStorage.setItem('library', `<div class="book" title="A Tale of Two Cities" author="Charles Dickens" pages="448" read="unread" lightcolor="#ffadad" darkcolor="#781212" style="background-color: rgb(255, 173, 173); color: rgb(120, 18, 18); display: flex;">A Tale of Two Cities<p>by Charles Dickens</p><button class="book-info" style="border: 1px solid rgb(120, 18, 18); background-color: rgb(255, 173, 173); color: rgb(120, 18, 18);">ⓘ</button><button class="toggle-read" style="background-color: rgb(120, 18, 18); color: rgb(255, 173, 173);">unread</button><button class="book-remove" title="Remove A Tale of Two Cities" style="border: 1px solid rgb(120, 18, 18); background-color: rgb(255, 173, 173); color: rgb(120, 18, 18);">×</button></div><div class="book" title="To Kill a Mockingbird" author="Harper Lee" pages="336" read="unread" lightcolor="#ffc799" darkcolor="#91530d" style="background-color: rgb(255, 199, 153); color: rgb(145, 83, 13); display: flex;">To Kill a Mockingbird<p>by Harper Lee</p><button class="book-info" style="border: 1px solid rgb(145, 83, 13); background-color: rgb(255, 199, 153); color: rgb(145, 83, 13);">ⓘ</button><button class="toggle-read" style="background-color: rgb(145, 83, 13); color: rgb(255, 199, 153);">unread</button><button class="book-remove" title="Remove To Kill a Mockingbird" style="border: 1px solid rgb(145, 83, 13); background-color: rgb(255, 199, 153); color: rgb(145, 83, 13);">×</button></div><div class="book" title="The Catcher in the Rye" author="J. D. Salinger" pages="288" read="unread" lightcolor="#ffe999" darkcolor="#917b0d" style="background-color: rgb(255, 233, 153); color: rgb(145, 123, 13); display: flex;">The Catcher in the Rye<p>by J. D. Salinger</p><button class="book-info" style="border: 1px solid rgb(145, 123, 13); background-color: rgb(255, 233, 153); color: rgb(145, 123, 13);">ⓘ</button><button class="toggle-read" style="background-color: rgb(145, 123, 13); color: rgb(255, 233, 153);">unread</button><button class="book-remove" title="Remove The Catcher in the Rye" style="border: 1px solid rgb(145, 123, 13); background-color: rgb(255, 233, 153); color: rgb(145, 123, 13);">×</button></div><div class="book" title="Brave New World" author="Aldous Huxley" pages="218" read="unread" lightcolor="#d6ff99" darkcolor="#67910d" style="background-color: rgb(214, 255, 153); color: rgb(103, 145, 13); display: flex;">Brave New World<p>by Aldous Huxley</p><button class="book-info" style="border: 1px solid rgb(103, 145, 13); background-color: rgb(214, 255, 153); color: rgb(103, 145, 13);">ⓘ</button><button class="toggle-read" style="background-color: rgb(103, 145, 13); color: rgb(214, 255, 153);">unread</button><button class="book-remove" title="Remove Brave New World" style="border: 1px solid rgb(103, 145, 13); background-color: rgb(214, 255, 153); color: rgb(103, 145, 13);">×</button></div><div class="book" title="1984" author="George Orwell" pages="352" read="unread" lightcolor="#99ffc0" darkcolor="#0d9170" style="background-color: rgb(153, 255, 192); color: rgb(13, 145, 112); display: flex;">1984<p>by George Orwell</p><button class="book-info" style="border: 1px solid rgb(13, 145, 112); background-color: rgb(153, 255, 192); color: rgb(13, 145, 112);">ⓘ</button><button class="toggle-read" style="background-color: rgb(13, 145, 112); color: rgb(153, 255, 192);">unread</button><button class="book-remove" title="Remove 1984" style="border: 1px solid rgb(13, 145, 112); background-color: rgb(153, 255, 192); color: rgb(13, 145, 112);">×</button></div><div class="book" title="Of Mice and Men" author="John Steinbeck" pages="112" read="unread" lightcolor="#99f8ff" darkcolor="#0d8991" style="background-color: rgb(153, 248, 255); color: rgb(13, 137, 145); display: flex;">Of Mice and Men<p>by John Steinbeck</p><button class="book-info" style="border: 1px solid rgb(13, 137, 145); background-color: rgb(153, 248, 255); color: rgb(13, 137, 145);">ⓘ</button><button class="toggle-read" style="background-color: rgb(13, 137, 145); color: rgb(153, 248, 255);">unread</button><button class="book-remove" title="Remove Of Mice and Men" style="border: 1px solid rgb(13, 137, 145); background-color: rgb(153, 248, 255); color: rgb(13, 137, 145);">×</button></div><div class="book" title="Lord of the Flies" author="William Golding" pages="224" read="unread" lightcolor="#99c5ff" darkcolor="#0d4091" style="background-color: rgb(153, 197, 255); color: rgb(13, 64, 145); display: flex;">Lord of the Flies<p>by William Golding</p><button class="book-info" style="border: 1px solid rgb(13, 64, 145); background-color: rgb(153, 197, 255); color: rgb(13, 64, 145);">ⓘ</button><button class="toggle-read" style="background-color: rgb(13, 64, 145); color: rgb(153, 197, 255);">unread</button><button class="book-remove" title="Remove Lord of the Flies" style="border: 1px solid rgb(13, 64, 145); background-color: rgb(153, 197, 255); color: rgb(13, 64, 145);">×</button></div><div class="book" title="A Clockwork Orange" author="Anthony Burgess" pages="240" read="unread" lightcolor="#c799ff" darkcolor="#630d91" style="background-color: rgb(199, 153, 255); color: rgb(99, 13, 145); display: flex;">A Clockwork Orange<p>by Anthony Burgess</p><button class="book-info" style="border: 1px solid rgb(99, 13, 145); background-color: rgb(199, 153, 255); color: rgb(99, 13, 145);">ⓘ</button><button class="toggle-read" style="background-color: rgb(99, 13, 145); color: rgb(199, 153, 255);">unread</button><button class="book-remove" title="Remove A Clockwork Orange" style="border: 1px solid rgb(99, 13, 145); background-color: rgb(199, 153, 255); color: rgb(99, 13, 145);">×</button></div>`)
     storage().load()
+}
+
+function closeNewBookModal(event) {
+    if (event.target!==newBookForm
+        && !Array.from(document.getElementsByTagName('input')).includes(event.target)
+        && !Array.from(document.getElementsByTagName('label')).includes(event.target)
+        && !Array.from(document.getElementsByTagName('select')).includes(event.target)
+        && !Array.from(document.getElementsByTagName('button')).includes(event.target)) {
+        newBookModal.style.display = 'none'
+    } else {return}
+}
+
+newBookModal.addEventListener("click", function() {closeNewBookModal(event)})
+
+function closeInfoModal(event) {
+    if (!Array.from(document.getElementsByTagName('h4')).includes(event.target)
+        && event.target!== infoTitle && event.target!== infoAuthor
+        && event.target!== infoPages && event.target!== infoRead) {
+        infoModal.style.display = 'none'
+    } else {return}
+}
+
+infoModal.addEventListener("click", function() {closeInfoModal(event)})
+
+document.onkeydown = (event) => {
+    if (event.key === "Escape") {
+        closeNewBookModal(event)
+        closeInfoModal(event)
+    }
 }
